@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run prisma:generate && next dev --turbopack",
-    "build": "next build && npm run prisma:generate",
+    "build": "npm run prisma:generate && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
@@ -16,7 +16,8 @@
     "prisma:validate": "prisma validate",
     "prisma:seed": "prisma db seed",
     "prisma:reset": "prisma migrate reset",
-    "prisma:deploy": "prisma migrate deploy"
+    "prisma:deploy": "prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.13.1",
