@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "npm run prisma:generate && next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -19,17 +19,29 @@
     "prisma:deploy": "prisma migrate deploy"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.13.1",
+    "@clerk/nextjs": "^6.0.2",
+    "@huggingface/inference": "^2.8.1",
     "@prisma/client": "^5.21.1",
-    "@prisma/extension-accelerate": "^1.2.1",
-    "@prisma/extension-pulse": "^1.2.0",
+    "@saas-ui/auth": "^3.6.0",
+    "@saas-ui/clerk": "^4.0.0",
+    "@saas-ui/react": "^2.11.1",
+    "axios": "^1.7.7",
+    "babel-plugin-react-compiler": "^19.0.0-beta-8a03594-20241020",
+    "critters": "^0.0.25",
     "next": "15.0.1",
     "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "react-markdown": "^9.0.1",
+    "react-syntax-highlighter": "^15.6.1",
+    "react-toastify": "^10.0.6"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
     "postcss": "^8",

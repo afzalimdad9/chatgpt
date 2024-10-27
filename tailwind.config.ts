@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        secondary: "#2f2f2f",
+        medium: "hsla(0,0%,100%,.15)"
       },
     },
   },
