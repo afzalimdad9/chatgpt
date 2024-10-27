@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
     after: true,
-    allowDevelopmentBuild: true,
+    allowDevelopmentBuild: process.env.NODE_ENV === 'development' ? true : undefined,
     middlewarePrefetch: "strict",
     cssChunking: "strict",
     optimisticClientCache: true,
