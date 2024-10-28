@@ -4,26 +4,17 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { message, title, userId } = await req.json();
 
+  let chatTitle = title || '';
+
   try {
-    let chatTitle = title || '';
     if (!title) {
-      const newTitleStream = await chatWithModel([
+      const newTitle = await chatWithModel([
         {
           role: "user",
           content: `You are a helpful assistant. You are given a message and you need to generate a thread title for it. Strictly give the name only don't add extra words. The message is: ${message}`,
         },
       ]);
-
-      const reader = newTitleStream.getReader();
-
-
-      while (true) {
-        const { done, value } = await reader.read();
-
-        if (done || !value) break;
-
-        chatTitle += value;
-      }
+      chatTitle = newTitle;
     }
 
     const newChat = await prisma.chat.create({

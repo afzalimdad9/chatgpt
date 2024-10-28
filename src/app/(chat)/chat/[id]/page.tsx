@@ -88,19 +88,10 @@ AI Response: ${aiResponse}
 
 Memory:`;
 
-            const memoryStream = await chatWithModel([
+            const memory = await chatWithModel([
                 { role: "system", content: "You are a highly efficient memory generation system. Your task is to create concise, relevant memories from user interactions." },
                 { role: "user", content: memoryPrompt }
             ]);
-
-            let memory = "";
-            const reader = memoryStream.getReader();
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                memory += value || "";
-            }
 
             const { data: { data: newMemory } }: AxiosResponse<{ data: Memory, error?: string }> = await axios.post('/api/memory', {
                 memory: memory.trim(),
