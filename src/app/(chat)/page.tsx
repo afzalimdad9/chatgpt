@@ -91,7 +91,7 @@ Memory:`;
       const memory = await chatWithModel([
         { role: "system", content: "You are a highly efficient memory generation system. Your task is to create concise, relevant memories from user interactions." },
         { role: "user", content: memoryPrompt }
-      ]);
+      ], true);
 
       const { data: { data: newMemory } }: AxiosResponse<{ data: Memory, error?: string }> = await axios.post('/api/memory', {
         memory: memory.trim(),
